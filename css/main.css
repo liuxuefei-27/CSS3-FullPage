@@ -1,0 +1,180 @@
+/*基本样式  开始*/
+*{
+	margin:0;
+	padding:0;
+	font-size: 12px;
+	font-family: "微软雅黑";
+}
+
+ul,ol{
+	list-style: none;
+}
+
+a{
+	text-decoration: none;
+}
+
+a:hover{
+	text-decoration: underline;
+}
+
+img,a img{
+	border:none;
+}
+/*基本样式  结束*/
+.page1{
+	text-align: center;
+}
+
+.clearfix:after{
+	content:"";
+	display: block;
+	visibility: hidden;
+	clear:both;
+	height:0;
+	line-height: 0;
+	font-size: 0;
+}
+
+.list{
+	display: inline-block;
+	width:60%;
+	height:100%;
+	vertical-align: top;
+	float:left;
+}
+
+.list img{
+	position: absolute;
+	top:150px;
+}
+
+.list img:nth-child(1){
+	left:0;
+}
+
+.list img:nth-child(2){
+	left:210px;
+}
+
+.list img:nth-child(3){
+	left:420px;
+}
+
+.right_box{
+	display: inline-block;
+	width:40%;
+	height:100%;
+	vertical-align: top;
+	float:left;
+}
+
+.right_box img{
+	position: absolute;
+}
+
+.right_box img:nth-child(1){
+	top:150px;
+	right:50px;
+}
+
+.right_box img:nth-child(2){
+	bottom:0px;
+	right:50px;
+}
+
+#audiobox{
+	display: inline-block;
+	width:42px;
+	height:42px;
+	background:url(../img/music.png);
+	position: fixed;
+	top:50px;
+	right:50px;
+}
+
+#audiobox:hover{
+	cursor: pointer;
+}
+
+/*[class*='page'] .list img{
+	width:240px;
+}表示class中包含page的元素的子元素.list下的子元素img*/
+
+/*第一页的动画  淡入
+  思路：通过opacity属性和transition配合实现
+*/
+.page1 img{
+	opacity:0;/*初始状态 隐藏*/
+	transition:opacity 1s 0.5s;
+}
+
+/*当第一页要显示的时候触发*/
+.page1.active img{
+	opacity: 1;
+}
+
+/*第二页效果 从下往上运动
+  思路：通过transform:translateY() 和 transition配合实现
+*/
+.page2 .list img{
+	transform: translateY(1000px);/*先让图片跑到下面去*/
+	transition: 1s;
+}
+
+.page2 .list img:nth-child(1){
+	transition-delay:0.5s;/*延迟*/
+}
+
+.page2 .list img:nth-child(2){
+	transition-delay:0.7s;/*延迟*/
+}
+
+.page2 .list img:nth-child(3){
+	transition-delay:0.9s;/*延迟*/
+}
+
+/*当第二页要显示的时候触发*/
+.page2.active .list img{
+	transform: translateY(0);
+}
+
+/*第三页动画效果 从左向右运动
+  思路：通过transform:translateX() 和 transition配合实现
+*/
+.page3 .list img{
+	transition: 1s 0.5s;
+}
+
+.page3 .list img:nth-child(2){
+	transform: translateX(-210px);
+}
+
+.page3 .list img:nth-child(3){
+	transform: translateX(-420px);
+}
+
+/*当第三页要显示的时候触发*/
+.page3.active .list img{
+	transform: translateX(0);
+}
+
+/*第四页动画 从中间向两边运动
+  思路：通过transform:translateX() 和 transition配合实现
+*/
+.page4 .list img{
+	transition: 1s 0.5s;
+}
+
+.page4 .list img:nth-child(1){
+	transform: translateX(210px);
+}
+
+.page4 .list img:nth-child(3){
+	transform: translateX(-210px);
+}
+
+/*当第四页要显示的时候触发*/
+.page4.active .list img{
+	transform: translateX(0);
+}
